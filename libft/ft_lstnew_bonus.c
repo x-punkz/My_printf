@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 10:28:05 by daniviei          #+#    #+#             */
-/*   Updated: 2025/11/04 10:55:08 by daniviei         ###   ########.fr       */
+/*   Created: 2025/11/05 19:23:36 by daniviei          #+#    #+#             */
+/*   Updated: 2025/11/07 10:45:20 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+t_list	*ft_lstnew(void *content)
 {
-	unsigned int	i;
+	t_list	*node;
 
-	i = 0;
-	if (!s || !f)
-		return ;
-	while (s[i] != '\0')
-	{
-		f(i, &s[i]);
-		i++;
-	}
+	node = (t_list *) malloc(sizeof (t_list));
+	if (!node)
+		return (NULL);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
 /*
 #include <stdio.h>
-void	even_star(unsigned int i, char *str)
+int     main(void)
 {
-	if (i % 2 == 0)
-		str[i] = '*';
-}
+        t_list  *conteudo;
 
-int	main(void)
-{
-	char	str[] = "hashtag boladao";
-
-	printf("Original: %s\n", str);
-	ft_striteri(str, &even_star);
-	printf("Modify: %s\n", str);
+        conteudo = ft_lstnew("batman");
+        printf("%s\n", (char *)conteudo->content);
 }*/

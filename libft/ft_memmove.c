@@ -6,7 +6,7 @@
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:41:08 by daniviei          #+#    #+#             */
-/*   Updated: 2025/10/28 16:01:13 by daniviei         ###   ########.fr       */
+/*   Updated: 2025/11/04 13:01:43 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,20 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	i = 0;
 	dst = dest;
 	s = src;
-	if (dst == s)
+	if (!dest || !src)
+		return (NULL);
+	if (dst == s || n == 0)
 		return (dest);
 	if (dst > s && dst < s + n)
 	{
-		i = n;
-		while (i > 0)
+		while (n > 0)
 		{
-			dst[i - 1] = s[i - 1];
-			i--;
+			dst[n - 1] = s[n - 1];
+			n--;
 		}
 	}
-	while (i < n)
-	{
-		dst[i] = s[i];
-		i++;
-	}
+	else
+		ft_memcpy(dst, s, n);
 	return (dest);
 }
 /*
@@ -45,13 +43,23 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 int main(void)
 {
+	char    src[] = "lorem ipsum dolor sit amet";
+        char    *dest;
+
+        dest = src + 1;
+	if (dest != ft_memmove(dest, src, 8))
+                        write(1, "dest's adress was not returned\n", 31);
+                write(1, dest, 22);
+-----------------------------------------------------------------------
 	char	str[] = "ABCDE";
 	char	str2[] = "abcde";
+	char	dest[30];
+	char	dest2[30];
 	
-	ft_memmove(str + 2, str, 3);
-	memmove(str2 + 2, str2, 3);
-	printf("my --> %s\n", str);
-	printf("Original --> %s\n", str2);
+	ft_memmove(str + 2, dest, 0);
+	memmove(str2 + 2, dest2, 0);
+	printf("my --> %s\n", dest);
+	printf("Original --> %s\n", dest2);
 
 	return 0;
 }*/

@@ -6,24 +6,27 @@
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 19:16:46 by daniviei          #+#    #+#             */
-/*   Updated: 2025/10/23 20:43:22 by daniviei         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:15:36 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	int			ssize;
-	size_t		i;
+	size_t	ssize;
+	size_t	i;
 
 	i = 0;
 	ssize = ft_strlen(src);
-	while (src[i] != '\0' && i < (size - 1))
-	{
-		dst[i] = src[i];
-		i++;
+	if (size > 0)
+	{	
+		while (src[i] != '\0' && i < (size - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
 	return (ssize);
 }
 /*
@@ -32,17 +35,17 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 int	main(void)
 {
 	char	*src;
-	char	dest[20];
+	char	dest[20] = "asfasfg";
 	char	*src2;
 	char	dest2[20] = "asfasfg";
 
-	src = "deu_certo";
-	src2 = "ndeucerto";
+	src = "deucerto";
+	src2 = "deucerto";
 
-	printf("%zu\n", ft_strlcpy(dest, src, 5));
-	printf("%s\n", dest);
+	printf("My --> %zu\n", ft_strlcpy(dest, src, 0));
+	printf("dest --> %s\n", dest);
 
-	printf("Original -- >%zu\n", strlcpy(dest2, src2, 5));
+	printf("Original -- > %zu\n", strlcpy(dest2, src2, 0));
 	printf("dest --> %s\n", dest2);
 
 }*/

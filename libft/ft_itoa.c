@@ -6,7 +6,7 @@
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 12:41:16 by daniviei          #+#    #+#             */
-/*   Updated: 2025/10/31 17:27:31 by daniviei         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:20:04 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -45,7 +45,7 @@ char	*ft_itoa(int n)
 	if (is_neg > 0)
 		nb = -nb;
 	len = is_neg + c_digit(nb) + 1;
-	conv = calloc(len, sizeof(char));
+	conv = ft_calloc(len, sizeof(char));
 	if (!conv)
 		return (NULL);
 	if (nb == 0)

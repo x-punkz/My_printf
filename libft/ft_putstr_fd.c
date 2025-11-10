@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 10:28:05 by daniviei          #+#    #+#             */
-/*   Updated: 2025/11/04 10:55:08 by daniviei         ###   ########.fr       */
+/*   Created: 2025/11/04 11:17:01 by daniviei          #+#    #+#             */
+/*   Updated: 2025/11/04 11:22:04 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_putstr_fd(char *s, int fd)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (!s || !f)
-		return ;
-	while (s[i] != '\0')
+	while (*s)
 	{
-		f(i, &s[i]);
-		i++;
+		write (fd, &*s, 1);
+		s++;
 	}
 }
 /*
-#include <stdio.h>
-void	even_star(unsigned int i, char *str)
-{
-	if (i % 2 == 0)
-		str[i] = '*';
-}
-
 int	main(void)
 {
-	char	str[] = "hashtag boladao";
-
-	printf("Original: %s\n", str);
-	ft_striteri(str, &even_star);
-	printf("Modify: %s\n", str);
+	ft_putstr_fd("alegria\n", 1);
 }*/

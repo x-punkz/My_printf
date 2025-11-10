@@ -6,14 +6,14 @@
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 11:52:56 by daniviei          #+#    #+#             */
-/*   Updated: 2025/10/22 15:47:02 by daniviei         ###   ########.fr       */
+/*   Updated: 2025/11/04 17:05:19 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 10:28:05 by daniviei          #+#    #+#             */
-/*   Updated: 2025/11/04 10:55:08 by daniviei         ###   ########.fr       */
+/*   Created: 2025/11/05 20:25:05 by daniviei          #+#    #+#             */
+/*   Updated: 2025/11/06 18:22:31 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+int	ft_lstsize(t_list *lst)
 {
-	unsigned int	i;
+	int	n_count;
 
-	i = 0;
-	if (!s || !f)
-		return ;
-	while (s[i] != '\0')
+	n_count = 0;
+	while (lst)
 	{
-		f(i, &s[i]);
-		i++;
+		lst = lst->next;
+		n_count++;
 	}
+	return (n_count);
 }
-/*
-#include <stdio.h>
-void	even_star(unsigned int i, char *str)
-{
-	if (i % 2 == 0)
-		str[i] = '*';
-}
-
-int	main(void)
-{
-	char	str[] = "hashtag boladao";
-
-	printf("Original: %s\n", str);
-	ft_striteri(str, &even_star);
-	printf("Modify: %s\n", str);
-}*/

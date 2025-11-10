@@ -6,36 +6,34 @@
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 14:43:02 by daniviei          #+#    #+#             */
-/*   Updated: 2025/10/28 15:38:42 by daniviei         ###   ########.fr       */
+/*   Updated: 2025/11/05 16:46:20 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	i;
 	char	*str;
 	char	*to_find;
+	size_t	t_len;
 
-	i = 0;
 	if (*little == 0)
 		return ((char *) big);
-	while (*big != '\0' && i < len)
+	while (*big != '\0' && len > 0)
 	{
-		str = (char *)big;
+		t_len = len;
+		str = (char *) big;
 		to_find = (char *)little;
-		while (*str == *to_find && *to_find != '\0' && i < len)
+		while (*str == *to_find && *to_find != '\0' && t_len > 0)
 		{
 			str++;
 			to_find++;
-			i++;
+			t_len--;
 		}
 		if (*to_find == '\0')
-		{
 			return ((char *) big);
-		}
 		big++;
-		i++;
+		len--;
 	}
 	return (NULL);
 }
@@ -46,7 +44,7 @@ int	main(int argc, char **argv)
 {
 	char	*str;
 
-	str = "alalala labamba";
+	str = "aaabcabcd";
 //	t_find = "bam";
 
 	(void)argc;

@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/04 10:28:05 by daniviei          #+#    #+#             */
-/*   Updated: 2025/11/04 10:55:08 by daniviei         ###   ########.fr       */
+/*   Created: 2025/11/04 11:41:35 by daniviei          #+#    #+#             */
+/*   Updated: 2025/11/04 11:59:12 by daniviei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_putnbr_fd(int n, int fd)
 {
-	unsigned int	i;
+	int	res;
 
-	i = 0;
-	if (!s || !f)
-		return ;
-	while (s[i] != '\0')
+	res = 0;
+	if (n == -2147483648)
 	{
-		f(i, &s[i]);
-		i++;
+		write (fd, "-2147483648", 11);
+		return ;
 	}
+	if (n < 0)
+	{
+		n = -n;
+		write (fd, "-", 1);
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	res = (n % 10) + 48;
+	write (fd, &res, 1);
 }
 /*
-#include <stdio.h>
-void	even_star(unsigned int i, char *str)
+int	main(int argc, char **argv)
 {
-	if (i % 2 == 0)
-		str[i] = '*';
-}
-
-int	main(void)
-{
-	char	str[] = "hashtag boladao";
-
-	printf("Original: %s\n", str);
-	ft_striteri(str, &even_star);
-	printf("Modify: %s\n", str);
+	(void)argc;
+	ft_putnbr_fd(atoi(argv[1]), atoi(argv[2]));
+	write (atoi(argv[2]), "\n", 1);
 }*/
