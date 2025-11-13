@@ -6,77 +6,39 @@
 #    By: daniviei <daniviei@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/21 16:06:08 by daniviei          #+#    #+#              #
-#    Updated: 2025/11/06 20:21:52 by daniviei         ###   ########.fr        #
+#    Updated: 2025/11/12 22:15:39 by daniviei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-SRCS = libft/ft_isalpha.c \
-libft/ft_isdigit.c \
-libft/ft_isalnum.c \
-libft/ft_isascii.c \
-libft/ft_isprint.c \
-libft/ft_strlen.c \
-libft/ft_memset.c \
-libft/ft_bzero.c \
-libft/ft_atoi.c \
-libft/ft_memcpy.c \
-libft/ft_memmove.c \
-libft/ft_memcmp.c \
-libft/ft_memchr.c \
-libft/ft_strlcpy.c \
-libft/ft_strlcat.c \
-libft/ft_toupper.c \
-libft/ft_tolower.c \
-libft/ft_strchr.c \
-libft/ft_calloc.c \
-libft/ft_strdup.c \
-libft/ft_strnstr.c \
-libft/ft_strncmp.c \
-libft/ft_strrchr.c \
-libft/ft_substr.c \
-libft/ft_strjoin.c \
-libft/ft_strtrim.c \
-libft/ft_split.c \
-libft/ft_itoa.c \
-libft/ft_strmapi.c \
-libft/ft_striteri.c \
-libft/ft_putchar_fd.c \
-libft/ft_putstr_fd.c \
-libft/ft_putendl_fd.c \
-libft/ft_putnbr_fd.c 
-
-BONUS_SRCS = ft_lstadd_back_bonus.c \
-libft/ft_lstadd_front_bonus.c \
-libft/ft_lstclear_bonus.c \
-libft/ft_lstdelone_bonus.c \
-libft/ft_lstiter_bonus.c \
-libft/ft_lstlast_bonus.c \
-libft/ft_lstmap_bonus.c \
-libft/ft_lstnew_bonus.c \
-libft/ft_lstsize_bonus.c
+LIB = libft/
+SRCS = ft_putnbr_hex.c \
+       ft_putnbr.c \
+       ft_putstr.c \
+       ft_printf.c
 
 H_SRCS = libft/libft.h
-OBJ = $(SRCS:.c=.o)
-BONUS_OBJ = $(BONUS_SRCS:.c=.o)
 
+OBJ = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
-
-bonus: $(OBJ) $(BONUS_OBJ)
-	ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
+	make -C $(LIB)
+	ar rcs $(NAME) $(OBJ) $(LIB)libft.a
 
 .c:.o
 	$(CC) $(FLAGS) -I $(H_SRCS) -c $< -o $@
+
 clean:
-	rm -f $(OBJ) $(BONUS_OBJ)
+	rm -f $(OBJ)
+	make -C $(LIB) clean
 
 fclean: clean
 	rm -f $(NAME)
+	make -C $(LIB) fclean
 
 re: fclean all
+
